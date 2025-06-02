@@ -3,13 +3,13 @@ version: '3.9'
 services:
   xclip:
     build:
-      context: .             # Dockerfile이 있는 폴더
+      context: .
       dockerfile: Dockerfile
     container_name: xclip
-    runtime: nvidia          # NVIDIA Container Toolkit 필요
+    runtime: nvidia
     environment:
-      - NVIDIA_VISIBLE_DEVICES=all  # 또는 특정 GPU 번호
+      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - .:/app               # 현재 디렉토리를 컨테이너로 마운트
+      - .:/app
     working_dir: /app
     command: ["python", "main.py"]
