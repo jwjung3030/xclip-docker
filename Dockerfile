@@ -1,22 +1,14 @@
-FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+FROM nvidia/cuda:12.6.2-cudnn8-runtime-ubuntu22.04
 
-RUN apt-get update && apt-get install -y \
-    python3.10 python3-pip git ffmpeg libsm6 libxext6 && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y python3 python3-pip git ffmpeg libsm6 libxext6
 
-RUN ln -s /usr/bin/python3.10 /usr/bin/python
+WORKDIR /workspace
+
+# PyTorch Nightly with CUDA 12.6
 RUN pip install --upgrade pip
+RUN pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126
 
-# XCLIP + 기타 패키지 설치
-RUN pip install \
-    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
-    pip install \
-    transformers \
-    accelerate \
-    opencv-python \
-    imageio \
-    decord
+# XCLIP dependencies
+RUN pip install transformers timm accelerate
 
-WORKDIR /app
-COPY . .
-CMD ["python", "main.py"]
+CMD ["/bin/bash"]
