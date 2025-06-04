@@ -22,6 +22,6 @@ RUN pip3 install \
     decord \
     einops
 
-WORKDIR /workspace
+WORKDIR /app
 
 CMD ["/bin/bash"]
