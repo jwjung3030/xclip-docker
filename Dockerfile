@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     libsm6 \
     libxext6 \
+    && ln -s /usr/bin/python3 /usr/bin/python \    
     && apt-get clean
 
 RUN pip3 install --upgrade pip
