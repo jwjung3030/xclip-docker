@@ -12,6 +12,6 @@ services:
     volumes:
       - .:/app:/app
     working_dir: /app
-    command: ["python3", "main.py"]
+    #command: ["python3", "main.py"]
     stdin_open: true     # <- 인터랙티브 입력 허용
     tty: true             # <- 가상 터미널 할당
