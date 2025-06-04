@@ -10,6 +10,6 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - .:/app
-    working_dir: /app
+      - .:/workspace
+    working_dir: /workspace
     command: ["python", "main.py"]
