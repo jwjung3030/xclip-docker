@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install --upgrade pip
 
-RUN pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126
+RUN pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 RUN pip3 install \
     transformers \
