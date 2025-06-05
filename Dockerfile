@@ -3,6 +3,7 @@ FROM nvidia/cuda:12.6.3-runtime-ubuntu22.04
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
+    python-is-python3 \
     git \
     ffmpeg \
     libsm6 \
