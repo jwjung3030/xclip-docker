@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.2.0-cuda12.1-cudnn8-runtime
+FROM nvidia/cuda:12.1.0-base-ubuntu20.04
 
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install --upgrade pip
 
-RUN pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 RUN pip3 install \
     transformers \
