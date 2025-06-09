@@ -1,7 +1,10 @@
 FROM nvidia/cuda:12.1.0-base-ubuntu20.04
 
+# 비대화형 모드 및 타임존 설정
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
+
 RUN apt-get update && apt-get install -y \
-    DEBIAN_FRONTEND=noninteractive TZ=Asia/Seoul apt-get install -y tzdata && \
     python3 \
     python3-pip \
     git \
