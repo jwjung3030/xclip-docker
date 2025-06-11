@@ -6,7 +6,6 @@
 
 - `Dockerfile`: CUDA + Python + XCLIP 설치
 - `docker-compose.yml`: XCLIP 실행 구성
-- `init.sh`: GPU 환경 자동 설정
 - `main.py`: XCLIP 테스트 코드
 
 ## ⚙️ 사용 방법
