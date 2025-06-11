@@ -12,4 +12,6 @@
 
 ### 1. GPU 동작 확인
 ```bash
+git clone https://github.com/jwjung3030/my-xclip-project.git
+
 python main.py
