@@ -10,7 +10,7 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - /home/uroot/app:/app
+      - .:/app
     working_dir: /app
     #command: ["python3", "main.py"]
     stdin_open: true     # <- 인터랙티브 입력 허용
