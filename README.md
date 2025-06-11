@@ -10,6 +10,6 @@
 
 ## ⚙️ 사용 방법
 
-### 1. NVIDIA 드라이버 및 GPU 확인
+### 1. GPU 동작 확인
 ```bash
-nvidia-smi
+python main.py
