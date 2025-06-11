@@ -14,5 +14,4 @@
 ```bash
 git clone https://github.com/jwjung3030/my-xclip-project.git
 cd my-xclip-project
-
-python main.py
+docker compose up --build
