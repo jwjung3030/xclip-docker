@@ -15,3 +15,5 @@
 git clone https://github.com/jwjung3030/my-xclip-project.git
 cd my-xclip-project
 docker compose up --build
+
+![image](https://github.com/user-attachments/assets/fba26de0-a96a-4213-9dbd-a08182fc416d)
