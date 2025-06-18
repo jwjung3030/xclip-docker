@@ -12,6 +12,6 @@
 
 ### 1. GPU 동작 확인
 ```bash
-git clone https://github.com/jwjung3030/my-xclip-project.git
+git clone https://github.com/jwjung3030/xclip-docker.git
 cd xclip-docker
 docker compose up --build
