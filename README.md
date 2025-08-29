@@ -1,4 +1,4 @@
-# XCLIP GPU Docker 배포 템플릿(dual 사용하기 전 버전)
+# XCLIP GPU Docker 배포 템플릿(xclip-docker-dual 사용하기 전 gpu 버전)
 
 이 리포지토리는 NVIDIA GPU에서 XCLIP 모델을 실행할 수 있도록 구성된 Docker 환경입니다.
 
