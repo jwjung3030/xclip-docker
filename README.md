@@ -12,8 +12,8 @@
 
 ### 1. GPU 동작 확인
 ```bash
-git clone https://github.com/jwjung3030/xclip-docker-dual.git
-cd xclip-docker-dual
+git clone https://github.com/jwjung3030/xclip-docker.git
+cd xclip-docker
 
 CPU용 이미지 빌드:
 docker compose build xclip-cpu
