@@ -1,17 +1,40 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  xclip:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"   # 외부에서 접근할 수 있도록
+    volumes:
+      - ./ollama:/root/.ollama
+
+  xclip-gpu:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: xclip
+      args:
+        DEVICE: gpu
+        BASE_IMAGE: nvidia/cuda:12.1.0-base-ubuntu20.04
+    image: xclip-gpu
     runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
+      - OLLAMA_HOST=http://ollama:11434   # 여기서 ollama로 접근 가능
     volumes:
       - ${PWD}:/app
-    working_dir: /app
     command: ["python3", "main.py"]
-    stdin_open: true     # <- 인터랙티브 입력 허용
-    tty: true             # <- 가상 터미널 할당
+
+  xclip-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DEVICE: cpu
+        BASE_IMAGE: python:3.8-slim
+    image: xclip-cpu
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      - ${PWD}:/app
+    command: ["python3", "main.py"]
