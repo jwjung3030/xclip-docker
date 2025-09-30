@@ -1,4 +1,4 @@
-# XCLIP GPU CPU Docker 배포 템플릿
+# XCLIP GPU CPU ollama Docker 연동(테스트 진행 중)
 
 이 리포지토리는 NVIDIA GPU 또는 CPU에서 XCLIP 모델을 실행할 수 있도록 구성된 Docker 환경입니다.
 
@@ -39,8 +39,6 @@ docker compose --profile ollama --profile xclip-gpu build
 docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu build
 
 ```
-
----
 
 ### 2️⃣ 실행
 
