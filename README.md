@@ -15,11 +15,100 @@
 git clone https://github.com/jwjung3030/xclip-docker.git
 cd xclip-docker
 
-CPU용 이미지 빌드:
-docker compose build xclip-cpu
 
-GPU용 이미지 빌드:
-docker compose build xclip-gpu
+### 1️⃣ 빌드
+
+- Ollama 서버와 xclip-cpu 빌드:
+
+```bash
+docker compose --profile ollama --profile xclip-cpu build
+
+```
+
+- Ollama 서버와 xclip-gpu 빌드:
+
+```bash
+docker compose --profile ollama --profile xclip-gpu build
+
+```
+
+> 한 번에 두 GPU/CPU 모두 빌드하려면:
+> 
+
+```bash
+docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu build
+
+```
+
+---
+
+### 2️⃣ 실행
+
+- Ollama + xclip-cpu 실행:
+
+```bash
+docker compose --profile ollama --profile xclip-cpu up -d
+
+```
+
+- Ollama + xclip-gpu 실행:
+
+```bash
+docker compose --profile ollama --profile xclip-gpu up -d
+
+```
+
+- 모든 컨테이너 실행:
+
+```bash
+docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu up -d
+
+```
+
+---
+
+### 3️⃣ 상태 확인
+
+- 컨테이너 상태 확인:
+
+```bash
+docker ps
+
+```
+
+- Ollama health 확인:
+
+```bash
+docker inspect -f '{{.State.Health.Status}}' ollama
+
+```
+
+- 컨테이너 안에서 Ollama 접속 테스트:
+
+```bash
+docker exec -it xclip-cpu curl http://ollama:11434/api/tags
+docker exec -it xclip-gpu curl http://ollama:11434/api/tags
+
+```
+
+---
+
+### 4️⃣ 종료 및 정리
+
+- 모든 컨테이너 종료:
+
+```bash
+docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu down
+
+```
+
+- 볼륨 포함 완전 삭제:
+
+```bash
+docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu down -v
+
+```
+
 
 CPU용 이미지 docker 접속:
 docker run -it --rm -v ${PWD}:/app  xclip-cpu
