@@ -110,11 +110,13 @@ docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu down -v
 ```
 
 
+### 4️⃣ 접속 실행
+
 CPU용 이미지 docker 접속:
-docker run -it --rm -v ${PWD}:/app  xclip-cpu
+docker run -it --rm --network xclip-docker_ollama-net -e OLLAMA_HOST=http://ollama:11434 -v ${PWD}:/app  xclip-cpu
 
 GPU용 이미지 docker 접속:
-docker run -it --rm --gpus all -v ${PWD}:/app  xclip-gpu
+docker run -it --rm --network xclip-docker_ollama-net -e OLLAMA_HOST=http://ollama:11434 --gpus all -v ${PWD}:/app  xclip-gpu
 
 실행
 python main.py
