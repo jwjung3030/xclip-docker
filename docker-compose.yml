@@ -9,7 +9,7 @@ services:
       - "11434:11434"
     volumes:
       - ./ollama:/root/.ollama
-    profiles: ["ollama-server"]
+    profiles: ["ollama"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
       interval: 5s
