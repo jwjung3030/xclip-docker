@@ -1,24 +1,25 @@
 version: "3.8"
 
 services:
-  # Ollama 서버
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama
+    # container_name: ollama   # ⬅️ 가능하면 제거
     ports:
       - "11434:11434"
     volumes:
       - ./ollama:/root/.ollama
     profiles: ["ollama"]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      # 일부 이미지에는 curl이 없을 수 있으니 올라마 엔드포인트 자체 헬스체크로 바꿔도 됨
+      test: ["CMD", "bash", "-lc", "wget -qO- http://localhost:11434/api/tags >/dev/null"]
       interval: 5s
       retries: 12
       timeout: 2s
     networks:
-      - ollama-net
+      ollama-net:
+        aliases:
+          - ollama   # ⬅️ 명시적 alias
 
-  # xclip GPU 컨테이너
   xclip-gpu:
     build:
       context: .
@@ -30,9 +31,9 @@ services:
     runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
-      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_HOST=http://ollama:11434  # ⬅️ 여기서 localhost 쓰면 안 됨
     volumes:
-      - ${PWD}:/app
+      - ./:/app
     command: ["python3", "main.py"]
     depends_on:
       ollama:
@@ -41,7 +42,6 @@ services:
     networks:
       - ollama-net
 
-  # xclip CPU 컨테이너
   xclip-cpu:
     build:
       context: .
@@ -53,7 +53,7 @@ services:
     environment:
       - OLLAMA_HOST=http://ollama:11434
     volumes:
-      - ${PWD}:/app
+      - ./:/app
     command: ["python3", "main.py"]
     depends_on:
       ollama:
@@ -65,3 +65,4 @@ services:
 networks:
   ollama-net:
     driver: bridge
+
