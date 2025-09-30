@@ -1,12 +1,24 @@
+version: "3.8"
+
 services:
+  # Ollama 서버
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
     ports:
-      - "11434:11434"   # 외부에서 접근할 수 있도록
+      - "11434:11434"
     volumes:
       - ./ollama:/root/.ollama
+    profiles: ["ollama-server"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 5s
+      retries: 12
+      timeout: 2s
+    networks:
+      - ollama-net
 
+  # xclip GPU 컨테이너
   xclip-gpu:
     build:
       context: .
@@ -18,11 +30,18 @@ services:
     runtime: nvidia
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
-      - OLLAMA_HOST=http://ollama:11434   # 여기서 ollama로 접근 가능
+      - OLLAMA_HOST=http://ollama:11434
     volumes:
       - ${PWD}:/app
     command: ["python3", "main.py"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    profiles: ["xclip-gpu"]
+    networks:
+      - ollama-net
 
+  # xclip CPU 컨테이너
   xclip-cpu:
     build:
       context: .
@@ -36,3 +55,13 @@ services:
     volumes:
       - ${PWD}:/app
     command: ["python3", "main.py"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    profiles: ["xclip-cpu"]
+    networks:
+      - ollama-net
+
+networks:
+  ollama-net:
+    driver: bridge
