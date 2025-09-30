@@ -3,22 +3,21 @@ version: "3.8"
 services:
   ollama:
     image: ollama/ollama:latest
-    # container_name: ollama   # ⬅️ 가능하면 제거
+    # container_name: ollama  # 가능하면 제거(내부 DNS 깔끔)
     ports:
       - "11434:11434"
     volumes:
       - ./ollama:/root/.ollama
     profiles: ["ollama"]
     healthcheck:
-      # 일부 이미지에는 curl이 없을 수 있으니 올라마 엔드포인트 자체 헬스체크로 바꿔도 됨
-      test: ["CMD", "bash", "-lc", "wget -qO- http://localhost:11434/api/tags >/dev/null"]
+      # 서버 준비가 느릴 수 있으니 여유 있게
+      test: ["CMD", "ollama", "list"]
       interval: 5s
-      retries: 12
-      timeout: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
     networks:
-      ollama-net:
-        aliases:
-          - ollama   # ⬅️ 명시적 alias
+      - ollama-net
 
   xclip-gpu:
     build:
