@@ -10,7 +10,7 @@
 
 ## ⚙️ 사용 방법
 
-### git 다운로드
+### 0️⃣ git 다운로드
 ```bash
 git clone https://github.com/jwjung3030/xclip-docker.git
 cd xclip-docker
