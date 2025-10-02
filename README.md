@@ -64,7 +64,7 @@ docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu up -d
 
 ```
 
-- ollama 에서 gemma3:4b 불러오기:
+- (공통)ollama 에서 gemma3:4b 불러오기:
 ```bash
 docker exec -it ollama ollama pull gemma3:4b
 
