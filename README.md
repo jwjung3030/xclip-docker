@@ -64,6 +64,11 @@ docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu up -d
 
 ```
 
+- ollama 에서 gemma3:4b 불러오기:
+```bash
+docker exec -it ollama ollama pull gemma3:4b
+
+```
 ---
 
 ### 3️⃣ 상태 확인
@@ -113,7 +118,7 @@ docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu down -v
 
 ```bash
 ollama 에서 gemma3:4b 불러오기:
-docker exec -it xclip-docker-ollama-1 ollama pull gemma3:4b
+docker exec -it ollama ollama pull gemma3:4b
 
 CPU용 이미지 docker 접속:
 docker run -it --rm --network xclip-docker_ollama-net -e OLLAMA_HOST=http://ollama:11434 -v ${PWD}:/app  xclip-cpu
