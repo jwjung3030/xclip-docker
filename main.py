@@ -40,7 +40,7 @@ if __name__ == "__main__":
     load_xclip()
     
     if len(sys.argv) < 2:
-        print("Usage: python translate.py '<Korean sentence or prompt>'")
+        print("Usage: python main.py '<Korean sentence or prompt>'")
         sys.exit(1)
     try:
         print(translate(sys.argv[1]).strip())
