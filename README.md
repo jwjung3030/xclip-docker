@@ -85,8 +85,8 @@ docker inspect -f '{{.State.Health.Status}}' ollama
 - 컨테이너 안에서 Ollama 접속 테스트:
 
 ```bash
-docker exec -it xclip-cpu curl http://ollama:11434/api/tags
-docker exec -it xclip-gpu curl http://ollama:11434/api/tags
+docker exec -it xclip-cpu python /app/main.py "강아지가 잔디밭을 뛰어다닌다."
+docker exec -it xclip-gpu python /app/main.py "강아지가 잔디밭을 뛰어다닌다."
 
 ```
 
