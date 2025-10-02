@@ -23,7 +23,22 @@ def translate(text: str, temperature: float = 0.2) -> str:
         return data["messages"][-1].get("content", "")
     return json.dumps(data, ensure_ascii=False)
 
+from transformers import XCLIPProcessor, XCLIPModel
+import torch
+
+def load_xclip():
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using device: {device}")
+    
+    processor = XCLIPProcessor.from_pretrained("microsoft/xclip-base-patch16")
+    model = XCLIPModel.from_pretrained("microsoft/xclip-base-patch16").to(device)
+    
+    print("XCLIP 모델이 성공적으로 로드되었습니다.")
+
 if __name__ == "__main__":
+
+    load_xclip()
+    
     if len(sys.argv) < 2:
         print("Usage: python translate.py '<Korean sentence or prompt>'")
         sys.exit(1)
