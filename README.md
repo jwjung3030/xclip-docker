@@ -114,7 +114,7 @@ docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu down -v
 ```
 
 
-### 5️⃣ 접속 실행
+### 5️⃣ 접속 실행 [docker compose (docker-compose.yml)를 사용하지 않는 방법]
 
 ```bash
 (이전에 안했으면) ollama 에서 gemma3:4b 불러오기:
