@@ -1,7 +1,7 @@
 services:
   ollama:
     image: ollama/ollama:latest
-    # container_name: ollama  # 가능하면 제거(내부 DNS 깔끔)
+    container_name: ollama  # 가능하면 제거(내부 DNS 깔끔)
     ports:
       - "11434:11434"
     volumes:
