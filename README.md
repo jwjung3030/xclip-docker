@@ -114,10 +114,10 @@ docker compose --profile ollama --profile xclip-gpu --profile xclip-cpu down -v
 ```
 
 
-### 4️⃣ 접속 실행
+### 5️⃣ 접속 실행
 
 ```bash
-ollama 에서 gemma3:4b 불러오기:
+(이전에 안했으면) ollama 에서 gemma3:4b 불러오기:
 docker exec -it ollama ollama pull gemma3:4b
 
 CPU용 이미지 docker 접속:
