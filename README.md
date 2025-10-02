@@ -10,11 +10,12 @@
 
 ## ⚙️ 사용 방법
 
-### 1. git 다운로드
+### git 다운로드
 ```bash
 git clone https://github.com/jwjung3030/xclip-docker.git
 cd xclip-docker
 
+```
 
 ### 1️⃣ 빌드
 
