@@ -31,7 +31,7 @@ services:
       - OLLAMA_HOST=http://ollama:11434  # ⬅️ 여기서 localhost 쓰면 안 됨
     volumes:
       - ./:/app
-    command: ["python3", "main.py"]
+    command: ["bash", "-lc", "sleep infinity"]
     depends_on:
       ollama:
         condition: service_healthy
@@ -51,7 +51,7 @@ services:
       - OLLAMA_HOST=http://ollama:11434
     volumes:
       - ./:/app
-    command: ["python3", "main.py"]
+    command: ["bash", "-lc", "sleep infinity"]
     depends_on:
       ollama:
         condition: service_healthy
