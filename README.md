@@ -1,12 +1,12 @@
 # XCLIP GPU CPU ollama Docker 연동(테스트 진행 중)
 
-이 리포지토리는 NVIDIA GPU 또는 CPU에서 XCLIP 모델을 실행할 수 있도록 구성된 Docker 환경입니다.
+이 리포지토리는 NVIDIA GPU 또는 CPU에서 XCLIP 모델을 실행 및 ollama 를 동시 실행 할 수 있도록 구성된 Docker 환경입니다.
 
 ## 💡 구성 파일
 
 - `Dockerfile`: CUDA + Python + XCLIP 설치
-- `docker-compose.yml`: XCLIP 실행 구성
-- `main.py`: XCLIP 테스트 코드
+- `docker-compose.yml`: ollama + XCLIP 실행 구성
+- `main.py`: XCLIP, ollama 테스트 코드
 
 ## ⚙️ 사용 방법
 
